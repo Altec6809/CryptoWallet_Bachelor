@@ -9,6 +9,7 @@ use App\Form\AddMoneyType;
 use App\Repository\TransactionRepository;
 use App\Service\CallApiService;
 use App\Service\RentabilityDataService;
+use DateTime;
 use phpDocumentor\Reflection\Types\Float_;
 use phpDocumentor\Reflection\Types\This;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -112,21 +113,25 @@ class HomeController extends AbstractController
 
 
         $dailyResult = $memorised->findAll();
-        $dailyResult = end($dailyResult);
-        $date = $dailyResult->getDate()->format('d/m/Y');
 
-        if (date(date('d/m/Y') > $date)) {
+         $dailyResult = end($dailyResult);
+        if (!empty($dailyResult)) {
 
-            $entityManager = $this->getDoctrine()->getManager();
-
-            $data = new MemoRentability();
-            $data->setbeneficiation($globalGain);
-            $data->setDate(new \DateTime());
-            $entityManager->persist($data);
-            $entityManager->flush();
+            $date = $dailyResult->getdate()->format('d/m/Y');
         }
 
+        if (empty($dailyResult) or date(date('d/m/Y') < $date)) {
 
+                $entityManager = $this->getDoctrine()->getManager();
+
+                $data = new MemoRentability();
+                $data->setbeneficiation($globalGain);
+                $data->setDate(new \DateTime());
+                $entityManager->persist($data);
+                $entityManager->flush();
+
+
+        }
         return $this->render('home.html.twig', ['currencyBitcoin' => $currencyBitcoin, 'currencyEthereum' => $currencyEthereum, 'currencyRipple' => $currencyRipple, 'globalGain' => $globalGain,]);
     }
 }

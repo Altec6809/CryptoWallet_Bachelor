@@ -1,0 +1,136 @@
+{# home.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block body %}
+    {# Menu #}
+    <nav class="navbar navbar-expand color-black " xmlns="http://www.w3.org/1999/html">
+        <div class="container-fluid ">
+            <a class="logo nav-logo" href="{{ path('home') }}">Crypto Tracker</a>
+            <ul class="navbar-nav navbar-top">
+                <a class="nav-logo" href={{ path('rmMoney') }}> <i class="fas fa-pen"></i></a>
+                <a class="nav-logo" href={{ path('addMoney') }}> <i class="fas fa-plus"></i></a>
+
+            </ul>
+        </div>
+    </nav>
+    {# Content #}
+    </div>
+    <div class="container-fluid content">
+    <div class="content-tab">
+        <div class="text-color  text-center mt-5 h1 ">  {% for msg in app.session.flashBag.get('success') %}
+                <div class="alert alert-success h5  " role="alert">
+                    {# Message ajout ou supression transaction #}
+                    {{ msg }}
+                </div>
+            {% endfor %}
+
+            <a class="text-decoration-none text-color fw-bold gain" href={{ path("chart") }}>
+                {% if globalGain > 0 %}
+                    <div class="global">
+                    {% block bd %}+{{ globalGain }} €</div>
+                    {% endblock %}
+                {% else %}
+                    {% block jeunesse %}{{ globalGain }} €{% endblock %}
+                {% endif %}
+            </a>
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>
+                        <div class="d-flex flex-row mb-3 text-color mt-5 ">
+                            <div class="p-2">
+
+                                {# Bitcoin #}
+                                <img class="currency" src="{{ asset('images/logo-btc.png') }}"></div>
+                            <div class="p-2 h4 mt-2  fw-bold">
+                                BTC
+                            </div>
+                            <div class=" h6 mt-3">(Bitcoin)</div>
+                        </div>
+                    </th>
+                    <td class="col-1 ">
+                        <div class="mt-5"> {% if currencyBitcoin> 1000 %}<p>
+                                <img class="arrows "
+                                     src="{{ asset('images/double arrow-up.png') }}">
+                                </p>
+                            {% elseif currencyBitcoin >= 0  and currencyBitcoin <= 999 %}
+                                <p>
+                                    <img class="arrows "
+                                         src="{{ asset('images/arrow-up.png') }}">
+                                </p>
+                            {% elseif currencyBitcoin < 0 %}
+                                <p>
+                                    <img class="arrows "
+                                         src="{{ asset('images/Low-Arrow.png') }}"></p>
+                            {% endif %}
+                        </div>
+                    </td>
+
+                </tr>
+                <tr>
+                    <th>
+                        <div class="d-flex flex-row mb-3 text-color mt-4 ">
+
+                            {# Ethereum #}
+                            <div class="p-2">
+                                <img class="currency" src="{{ asset('images/logo-eth.png') }}"></div>
+                            <div class="p-2 h4 mt-2 fw-bold">
+                                ETH
+                            </div>
+                            <div class="h6 mt-3">(Ethereum)</div>
+                        </div>
+                    </th>
+                    <td>
+                        <div class="mt-4"> {% if currencyEthereum> 1000 %}<p>
+                                <img class="arrows "
+                                     src="{{ asset('images/double arrow-up.png') }}"></p>
+                            {% elseif currencyEthereum >= 0  and currencyEthereum <= 999 %}
+                                <p>
+                                    <img class="arrows "
+                                         src="{{ asset('images/arrow-up.png') }}">
+                                </p>
+                            {% elseif currencyEthereum < 0 %}
+                                <p>
+                                    <img class="arrows "
+                                         src="{{ asset('images/Low-Arrow.png') }}"></p>
+                            {% endif %}
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <div class="d-flex flex-row mb-3 text-color mt-4">
+                            <div class="p-2">
+
+                                {# Ripple #}
+                                <img class="currency" src="{{ asset('images/logo-xrp.png') }}"></div>
+                            <div class="p-2 h4 mt-2 fw-bold ">
+                                XRP
+                            </div>
+                            <div class="h6 mt-3">(Ripple)</div>
+                        </div>
+                    </th>
+                    <td>
+                        <div class="mt-4"> {% if currencyRipple> 1000 %}<p>
+                                <img class="arrows "
+                                     src="{{ asset('images/double arrow-up.png') }}"></p>
+                            {% elseif currencyRipple >= 0  and currencyRipple <= 999 %}
+                                <p>
+                                    <img class="arrows "
+                                         src="{{ asset('images/arrow-up.png') }}"></p>
+                            {% elseif currencyRipple < 0 %}
+                                <p>
+                                    <img class="arrows "
+                                         src="{{ asset('images/Low-Arrow.png') }}"></p>
+                            {% endif %}
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

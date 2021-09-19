@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une transaction{% endblock %}
+
+{% block body %}
+    <div class="color-black">
+        <!-- Navbar start -->
+        <nav class=" nav-transaction navbar navbar-expand bg-black border-bot">
+            <div class="container-fluid text-light">
+                <a class="nav-item" href="{{ path('home') }}" aria-label="Close"><i class="fas fa-times"></i></a>
+                <h2 class="flex-fill">Ajouter une transaction</h2>
+            </div>
+        </nav>
+        <!-- Nav End -->
+        {% for msg in app.session.flashBag.get('error') %}
+            <div class="alert alert-danger text-center" role="alert">
+                {{ msg }}
+            </div>
+        {% endfor %}
+        <div class="add-page">
+            <div class="form-container">
+                {{ form_start(form) }}
+                <div class=" mb-2 bg-danger text-white">
+                    {{ form_errors(form.quantity) }}
+                    {{ form_errors(form.price) }}
+                </div>
+                <div class="form-group gy-2 gx-3 align-items-center">
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1"><img class="arrow"
+                                                                              src="{{ asset('images/search.png') }}"></span>
+                        {{ form_widget(form.cryptoName, {'attr': { 'class': 'text-light form-control ' , }}) }}
+                    </div>
+                </div>
+                <div class="form-group gy-2 gx-3 align-items-center">
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1"><img class="arrow"
+                                                                              src="{{ asset('images/quantity.png') }}"></span>
+                        {{ form_widget(form.quantity, {'attr': { 'class': 'text-light form-control ' , }}) }}
+
+                    </div>
+                </div>
+                <div class="form-group gy-2 gx-3 align-items-center">
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1"><img class="arrow"
+                                                                              src="{{ asset('images/euro.png') }}"></span>
+                        {{ form_widget(form.price, {'attr': { 'class': 'text-light form-control ' , }}) }}
+                    </div>
+                </div>
+
+                <div class="text-center btn-padding-5">
+                    <button type="submit" class="btn-form btn-hover">Ajouter</button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

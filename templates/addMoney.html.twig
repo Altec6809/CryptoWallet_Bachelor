@@ -4,14 +4,14 @@
 
 {% block body %}
     <div class="color-black">
-        <!-- Navbar start -->
+        <!--Menu -->
         <nav class=" nav-transaction navbar navbar-expand bg-black border-bot">
             <div class="container-fluid text-light">
                 <a class="nav-item" href="{{ path('home') }}" aria-label="Close"><i class="fas fa-times"></i></a>
                 <h2 class="flex-fill">Ajouter une transaction</h2>
             </div>
         </nav>
-        <!-- Nav End -->
+        <!-- Content -->
         {% for msg in app.session.flashBag.get('error') %}
             <div class="alert alert-danger text-center" role="alert">
                 {{ msg }}

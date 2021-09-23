@@ -4,20 +4,20 @@
 
 {% block body %}
     <div class="color-black">
-        <!-- Navbar start -->
-        <nav class=" nav-transaction navbar navbar-expand bg-black border-bot">
+        <!-- Navbar  -->
+        <nav class=" nav-transaction navbar navbar-expand color-black border-bot">
             <div class="container-fluid text-light">
                 <a class="nav-item" href="{{ path('home') }}" aria-label="Close"><i class="fas fa-times"></i></a>
                 <h2 class="flex-fill">Ajouter une transaction</h2>
             </div>
         </nav>
-        <!-- Nav End -->
+        <!-- Content  -->
         {% for msg in app.session.flashBag.get('error') %}
             <div class="alert alert-danger text-center" role="alert">
                 {{ msg }}
             </div>
         {% endfor %}
-        <div class="add-page">
+        <div >
             <div class="form-container">
                 {{ form_start(form) }}
                 <div class=" mb-2 bg-danger text-white">
@@ -45,7 +45,7 @@
                         {{ form_widget(form.price, {'attr': { 'class': 'text-light form-control ' , }}) }}
                     </div>
                 </div>
-                <div class="text-center btn-padding-5">
+                <div class="text-center btn-padding-4">
                     <button type="submit" class="btn-form btn-hover">Ajouter</button>
                 </div>
                 {{ form_end(form) }}

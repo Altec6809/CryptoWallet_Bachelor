@@ -17,12 +17,13 @@
     color: #1fc36c;
 }
 
-/*Fonts*/
+
+
 .text-color {
     color: #efefef;
 }
 
-/*Fonts*/
+
 @font-face {
     font-family: "Akzidenz-Grotesk BQ";
     src: url('fonts/AkzidenzGroteskBQ-BdCnd.woff2') format('woff2'),
@@ -42,7 +43,6 @@
     url('fonts/Roboto-Bold-webfont.woff') format('woff');
 }
 
-/*GLOBAL*/
 html {
     height: 100%;
 }
@@ -53,19 +53,16 @@ body {
 }
 
 
-.home, .add-page, .remove-page, .graph {
-    min-height: calc(100vh - 60px);
-}
+
 
 .color-black {
     background-color: #100f0f;
 }
 
 
-/*#################################*/
-/*            HOME PAGE            */
-/*#################################*/
-/*NAV HomeController*/
+/*            HOME            */
+
+
 .navbar {
     height: 60px;
     border-bottom: 1px solid rgba(239, 239, 239, 0.6);
@@ -101,7 +98,7 @@ body {
 
 }
 
-/*HOME PAGE*/
+
 .home-header {
     height: 130px;
     display: flex;
@@ -115,7 +112,7 @@ body {
     font-size: 33px;
 }
 
-/* LIST CRYPTOS */
+
 .crypto-list-container {
     color: rgb(239, 239, 239);
     border-color: rgb(16, 15, 1);
@@ -183,14 +180,18 @@ body {
 }
 
 .btn-add-transac:hover {
-    background-color: #100f0f;
+    background-color: black;
     color: rgb(239, 239, 239);
     border: 2px solid rgb(239, 239, 239);
 }
 
-/*#################################*/
-/*        ADD/REMOVE PAGE          */
-/*#################################*/
+.crypto{
+   font-size: 1.5rem;
+}
+
+
+/*        ADD/REMOVE           */
+
 
 .nav-transaction a {
     font-size: 30px;
@@ -215,9 +216,9 @@ body {
 }
 
 .form-container {
-    width: 70%;
+    width: 50%;
     margin: auto;
-    padding-top: 35px;
+    padding-top: 50px;
 }
 
 .form-group {
@@ -248,7 +249,7 @@ body {
 }
 
 .btn-form:hover {
-    background-color: #100f0f;
+    background-color: #1fc36c;
     color: rgb(239, 239, 239);
     border: 2px solid rgb(239, 239, 239);
 }
@@ -258,53 +259,16 @@ body {
     color: rgb(239, 239, 239) !important;
 }
 
-/*#################################*/
-/*          GRAPH PAGE          */
-/*#################################*/
+
+/*         CHART          */
+
 canvas {
     height: auto !important;
     margin: auto !important;
     width: 80% !important;
 }
 
-/*#################################*/
-/*          Error PAGE          */
-/*#################################*/
-.containerError {
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    text-align: center;
-    color: #343434;
-}
-
-.containerError h1 {
-    font-size: 160px;
-    margin: 0;
-    font-weight: 900;
-    letter-spacing: 20px;
-}
-
-.containerError a {
-    text-decoration: none;
-    background: #1fc36c;
-    color: #ffffff;
-    padding: 12px 24px;
-    display: inline-block;
-    border-radius: 25px;
-    font-size: 14px;
-    text-transform: uppercase;
-    transition: 0.4s;
-}
-
-.containerError a:hover {
-    background: #1fc36e;
-}
-
-/*#################################*/
-/*    Media Queries*    /
-/*#################################*/
+/*    Media Queries     */
 
 
 @media screen and (max-width: 800px) {
@@ -324,10 +288,6 @@ canvas {
 
     .navbar {
         height: 75px;
-    }
-
-    .home, .add-page, .remove-page, .graph {
-        min-height: calc(100vh - 75px);
     }
 
     .home-header {
@@ -356,12 +316,9 @@ canvas {
         height: 17px;
     }
 
-    .nav-transaction a {
-        font-size: 27px;
-    }
 
     .nav-transaction h2 {
-        font-size: 25px;
+        font-size: 18px;
     }
 
     .content-tab {
@@ -371,4 +328,24 @@ canvas {
     .gain {
         font-size: 43px;
     }
+    .nav-transaction a {
+        font-size: 20px;
+        color: rgb(239, 239, 239);
+        will-change: transform;
+        transition: transform 350ms;
+        margin-left: 10px;
+    }
+
+    .form-container {
+        width: 80%;
+        margin: auto;
+        padding-top: 50px;
+    }
+    .crypto{
+        font-size: 1rem;
+    }
+
+.form{
+    ;
+}
 }

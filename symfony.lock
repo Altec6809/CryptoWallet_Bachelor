@@ -597,7 +597,7 @@
             "./config/packages/webpack_encore.yaml",
             "./package.json",
             "./webpack.config.js"
-        ]
+            ]
     },
     "symfony/yaml": {
         "version": "v5.3.6"

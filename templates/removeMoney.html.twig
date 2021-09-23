@@ -16,24 +16,25 @@
                 {{ msg }}
             </div>
         {% endfor %}
-        <div class="add-page">
+        <!-- Content -->
+        <div>
             <div class="form-container">
                 {{ form_start(form) }}
                 <div class=" mb-2 bg-danger text-white">
                     {{ form_errors(form.quantity) }}
                 </div>
                 <div class="form-group gy-2 gx-3 align-items-center">
-                    <div class="input-group">
+                    <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1"><img class="arrow"
                                                                               src="{{ asset('images/search.png') }}"></span>
-                        {{ form_widget(form.cryptoName, {'attr': { 'class': 'text-light form-control ' , }}) }}
+                        {{ form_widget(form.cryptoName, {'attr': { 'class': 'text-light form-control  ' , }}) }}
                     </div>
                 </div>
                 <div class="form-group gy-2 gx-3 align-items-center">
                     <div class="input-group">
                         <span class="input-group-text" id="basic-addon1"><img class="arrow"
                                                                               src="{{ asset('images/quantity.png') }}"></span>
-                        {{ form_widget(form.quantity, {'attr': { 'class': 'text-light form-control ' , }}) }}
+                        {{ form_widget(form.quantity, {'attr': { 'class': 'text-light form-control form ' , }}) }}
                     </div>
                 </div>
                 <div class="text-center btn-padding-5">

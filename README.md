@@ -1,2 +1,2 @@
-# CryptoTracker_Bachelor
+# CryptoWallet_Bachelor
  Mon projet Studi

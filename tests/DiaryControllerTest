@@ -1,0 +1,20 @@
+<?php
+namespace App\Tests;
+
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+
+class DiaryControllerTest extends WebTestCase
+{
+    public function testAll()
+    {
+        $client = static::createClient();
+        $urls = ['/','/remove', '/add-Money','chart'];
+        foreach ($urls as $url) {
+            $client->request('GET', $url);
+            $this->assertSame(200,
+                $client->getResponse()->getStatusCode());
+
+        }
+    }
+}
+

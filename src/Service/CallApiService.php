@@ -12,14 +12,6 @@ class CallApiService
 {
     // Fonction permettant de faire appel à l'API et de retourner son contenu
 
-
-    public function CurrentPriceBitcoin(CallApiService $callApiService)
-    {
-        $dataApi = $callApiService->callAPI();
-
-        return $CurrentPriceBitcoin = 38756;//$dataApi['data'][0]['quote']['EUR']['price'];
-    }
-
     public function callAPI()
     {
         $url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest';
@@ -56,19 +48,28 @@ class CallApiService
         return $resultat;
 
     }
-
-    public function CurrentPriceEthereum(CallApiService $callApiService)
+    // on retourne le taux du bitcoin
+        public function CurrentPriceBitcoin(CallApiService $callApiService)
     {
         $dataApi = $callApiService->callAPI();
 
-        return $CurrentPriceEthereum = 2819.5300;// $dataApi['data'][1]['quote']['EUR']['price'];
+        return $CurrentPriceBitcoin = 38756;//$dataApi['data'][0]['quote']['EUR']['price'];
+    }
+    
+     // on retourne le taux de l'Ethereum
+        public function CurrentPriceEthereum(CallApiService $callApiService)
+    {
+        $dataApi = $callApiService->callAPI();
+
+        return $CurrentPriceEthereum = $dataApi['data'][1]['quote']['EUR']['price'];
     }
 
-    public function CurrentPriceRipple(CallApiService $callApiService)
+      // on retourne le taux du Ripple
+        public function CurrentPriceRipple(CallApiService $callApiService)
     {
         $dataApi = $callApiService->callAPI();
 
-        return $CurrentPriceRipple = 0.9088;// $dataApi['data'][5]['quote']['EUR']['price'];
+        return $CurrentPriceRipple = $dataApi['data'][5]['quote']['EUR']['price'];
     }
 }
 

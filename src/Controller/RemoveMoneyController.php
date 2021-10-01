@@ -17,12 +17,11 @@ class RemoveMoneyController extends AbstractController
      */
     public function removeMoney(Request $request, CallApiService $callApiService): Response
     {
+        // Appel à l'Api.
         $dataApi = $callApiService->callAPI();
         $transaction = new Transaction();
         $form = $this->createForm(RemoveMoneyType::class, $transaction);
         $form->handleRequest($request);
-
-
         $transaction->setDate((new \DateTime()));
         $em = $this->getDoctrine()->getManager();
         //  dd($Crypto = $form->getdata());
@@ -44,13 +43,9 @@ class RemoveMoneyController extends AbstractController
                 $transaction->setPrice($RateRipple);
                 break;
         }
-
         $transaction->setQuantity($CryptoQuantityRemove);
-
-        //   );
-
-        // }
-        dump($form['quantity']->getdata());
+        $form['quantity']->getdata();
+        //stock de la valeur supprimé
         if ($form->isSubmitted() && $form['quantity']->getdata() >= 0.001) {
             $em->persist($transaction);
             $em->flush();

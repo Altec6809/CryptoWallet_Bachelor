@@ -106,31 +106,25 @@ class HomeController extends AbstractController
         else:
             $gainRipple = (array_sum($rateGainRipple) + array_sum($rateRemoveRipple));
         endif;
-
-
+        
+        // On additionne toute les rentabilités de chaque crypto pour avoir le total
         $globalGain = $gainRipple + $gainEthereum + $gainBitcoin;
         $globalGain = round($globalGain);
-
-
         $dailyResult = $memorised->findAll();
-
          $dailyResult = end($dailyResult);
+        
         if (!empty($dailyResult)) {
-
             $date = $dailyResult->getdate()->format('d/m/Y');
         }
-
         if (empty($dailyResult) or date(date('d/m/Y') < $date)) {
-
+            
+         // On stocke la valeur total de la rentabilité une fois par jour.
                 $entityManager = $this->getDoctrine()->getManager();
-
                 $data = new MemoRentability();
                 $data->setbeneficiation($globalGain);
                 $data->setDate(new \DateTime());
                 $entityManager->persist($data);
                 $entityManager->flush();
-
-
         }
         return $this->render('home.html.twig', ['currencyBitcoin' => $currencyBitcoin, 'currencyEthereum' => $currencyEthereum, 'currencyRipple' => $currencyRipple, 'globalGain' => $globalGain,]);
     }
